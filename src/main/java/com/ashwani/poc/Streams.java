@@ -29,7 +29,6 @@ public class Streams {
 		
 		return finalList;
 	}
-	//http://www.oracle.com/technetwork/cn/community/developer-day/2-55-new-features-java-se-8-2202551-zhs.pdf
 	
 	public static Comparator<String> getReverseComparator()
 	{
