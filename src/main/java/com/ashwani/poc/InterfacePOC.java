@@ -18,7 +18,6 @@ public class InterfacePOC implements DefaultInterface{
 	}
 }
 
-
 @FunctionalInterface
 interface DefaultInterface {
 	

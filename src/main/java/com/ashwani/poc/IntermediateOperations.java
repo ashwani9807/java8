@@ -2,29 +2,34 @@ package com.ashwani.poc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class IntermediateOperations {
 	
-	
+	//filter based on starting string return list
 	public static List<String> filterStringStartingWith(List<String> inputList, String startingPattern)
 	{
 		return inputList.stream().filter(value -> value.startsWith(startingPattern)).collect(Collectors.toList());
 	}
-	
-	public static List<String> filterStringEndingWith(List<String> inputList, String endingPattern)
+	//filter based on ending string return set
+	public static Set<String> filterStringEndingWith(List<String> inputList, String endingPattern)
 	{
-		return inputList.stream().filter(value -> value.endsWith(endingPattern)).collect(Collectors.toList());
+		return inputList.stream().filter(value -> value.endsWith(endingPattern)).collect(Collectors.toSet());
 	}
-	
+	//sort the string list
 	public static List<String> sortListOfStrings(List<String> inputToBeSorted)
 	{
 		return inputToBeSorted.stream().sorted().collect(Collectors.toList());
 	}
-	
-	public static List<String> convertToUpperCase(List<String> inputToBeConverted)
+	//convert to Map and put values as upper case
+	public static Map<String,String> convertToUpperCase(List<String> inputToBeConverted)
 	{
-		return inputToBeConverted.stream().map(value -> value.toUpperCase()).collect(Collectors.toList());
+		Function<String,String> keyMapper = String::toLowerCase;
+		Function<String,String> valueMapper = String::toUpperCase;
+		return inputToBeConverted.stream().map(value -> value.toUpperCase()).collect(Collectors.toMap(keyMapper, valueMapper));
 	}
 	
 	public static List<String> convertToUpperCaseAndLimit(List<String> inputToBeConverted)
