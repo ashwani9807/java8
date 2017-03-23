@@ -21,6 +21,22 @@ public class ConcurrencyPOC {
 		Arrays.parallelSort( intArray , ( x, y ) -> ((Integer) x).compareTo( (Integer) y ) );
 		System.out.println("After sort ");
 		printValues(intArray);
+		
+		//List with parallel streams
+		List<Integer> list = new ArrayList<Integer>() {{
+			
+			add(1);
+			add(2);
+			add(3);
+			add(4);
+			add(5);
+		}};
+		
+		Consumer<Integer> consumeIntegerData = data -> { System.out.println(data); } ;
+		
+		list.parallelStream().forEach(consumeIntegerData);
+		System.out.println("Sequential ");
+		list.stream().forEach(consumeIntegerData);
 	}
 	
 	static void printValues(Integer [] intArray)
